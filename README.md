@@ -45,6 +45,10 @@ stateDiagram-v2
     SERVICING --> MOVING : Door=0, Req=1
 ```
 
+### Software Verification
+In order for the elevator to hit all the floors without missing out on any, I implemented the LOOK disk algorithm to make sure it can traverse accordingly when going up and also traverse down accordingly without going to floors out of order. I prioritized 2 things when validating with python: Making sure that the LOOK algorithm worked and making sure that I can simulate the Limited Memory that the Arduino had so I make sure I am within memory bounds when I eventually tape out in hardware. To simulate how I would run my code on Arduino, I defined registers in my python file and the way I would traverse would be through bitwise shifting rather than rigidly incrementing or decrementing pointers. I wrote a test bench to make sure my code can work with limited physical memory and any test cases that could potentially break my elevator. To keep it simple, I made sure my elevator always reset to floor 1 after all requests are done. 
+
+
 
 
 
