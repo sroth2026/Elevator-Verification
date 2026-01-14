@@ -28,7 +28,7 @@ When Door sensor is 1 it means the door is open. When Request is 1 then the stat
 | SERVICING | 0 | 1 | Resume Movement | MOVING |
 
 ### Finite State Machine
-
+My FSM is a Moore Machine because the output is tied directly to the current state. 
 ```mermaid
 stateDiagram-v2
     [*] --> IDLE
@@ -44,6 +44,7 @@ stateDiagram-v2
     SERVICING --> SERVICING : Door=1, X
     SERVICING --> MOVING : Door=0, Req=1
 ```
+
 
 
 
