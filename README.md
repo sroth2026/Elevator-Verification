@@ -14,15 +14,18 @@ Created an automated elevator system using digital logic principles, verified in
 
 ### Elevator Safety Logic Table
 
-| State | Door | Req | Output | Next State |
+There are 4 states, which is IDLE, MOVING, STOPPING, and SERVICING. 
+When Door sensor is 1 it means the door is open. When Request is 1 then the state should be updated to the next state. 
+
+| State | Door | Req | Hardware Action | Next State |
 |-------|------|--------|--------|-------------|
-| IDLE | 0 | 0 | OFF | IDLE |
-| IDLE | 0 | 1 | ON | MOVING |
-| MOVING | 0 | 0 | ON | MOVING |
-| MOVING | 0 | 1 | OFF | STOPPING |
-| STOPPING | 0 | X | OFF | SERVICING |
-| SERVICING | 1 | X | OFF | SERVICING |
-| SERVICING | 0 | 1 | ON | MOVING |
+| IDLE | 0 | 0 | Display Current Floor | IDLE |
+| IDLE | 0 | 1 | Start floor increment | MOVING |
+| MOVING | 0 | 0 | Update 7 seg display | MOVING |
+| MOVING | 0 | 1 | Stop increment | STOPPING |
+| STOPPING | 0 | X | Trigger stop sequence | SERVICING |
+| SERVICING | 1 | X | Hold display/timer | SERVICING |
+| SERVICING | 0 | 1 | Resume Movement | MOVING |
 
 ### Finite State Machine
 
@@ -41,6 +44,7 @@ stateDiagram-v2
     SERVICING --> SERVICING : Door=1, X
     SERVICING --> MOVING : Door=0, Req=1
 ```
+
 
 
 
